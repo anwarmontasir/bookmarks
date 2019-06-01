@@ -22,8 +22,8 @@ class AddBookmark extends Component {
                         max="5" />
                     
                     <div className="addbookmark__buttons">
-                        <button>Cancel</button>
-                        <button type="submit">Save</button>
+                        <button id="btn-cancel">Cancel</button>
+                        <button type="submit" id="btn-save">Save</button>
                     </div>
                 </form>
             </div>

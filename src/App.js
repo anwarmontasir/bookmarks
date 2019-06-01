@@ -8,14 +8,14 @@ const bookmarks = [
   {
     title:"Google",
     url:"http://www.google.com", 
-    rating:"3", 
-    description:"No evil"
+    rating:"4", 
+    description:"A popular search engine"
     },
     {
-      title:"Google",
-      url:"http://www.google.com", 
-      rating:"3", 
-      description:"No evil"
+      title:"Taco Bell",
+      url:"http://ta.co", 
+      rating:"2", 
+      description:"Yo quiero"
     }
 ]
 

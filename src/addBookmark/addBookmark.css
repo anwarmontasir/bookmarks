@@ -21,3 +21,19 @@
     text-align: left;
     font-size: 0.9em;
   }
+
+  #btn-cancel {
+    border: none;
+    text-decoration: underline;
+    margin-right: 15px;
+    font-size: .9rem;
+    padding: 5px 0;
+    color: #555;
+  }
+  #btn-save {
+    background: #2369CF;
+    color: #fff;
+    border-radius: 5px;
+    font-size: .9rem;
+    padding: 5px 15px;
+  }
