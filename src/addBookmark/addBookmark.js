@@ -22,7 +22,7 @@ class AddBookmark extends Component {
                         max="5" />
                     
                     <div className="addbookmark__buttons">
-                        <button id="btn-cancel">Cancel</button>
+                        <button id="btn-cancel" onClick={e => this.props.showForm}>Cancel</button>
                         <button type="submit" id="btn-save">Save</button>
                     </div>
                 </form>

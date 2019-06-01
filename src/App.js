@@ -4,27 +4,58 @@ import './App.css';
 import AddBookmark from './addBookmark/addBookmark';
 import BookmarkApp from './bookmarkApp/bookmarkApp';
 
-const bookmarks = [
-  {
-    title:"Google",
-    url:"http://www.google.com", 
-    rating:"4", 
-    description:"A popular search engine"
-    },
-    {
-      title:"Taco Bell",
-      url:"http://ta.co", 
-      rating:"2", 
-      description:"Yo quiero"
-    }
-]
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bookmarks: [],
+      showAddForm: false
+    }
+  }
+
+  componentDidMount() {
+    const url = 'https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks';
+    const options = {
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer $2a$10$ZhdeJefcb.5sx/DCmO/n8u5sJLcARAdbHw9tfm1mevGRq3s1.5DpW",
+        "Content-Type": "application/json"
+      }
+    }
+
+    fetch(url, options)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Something went wrong');
+        }
+        return res;
+      })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          bookmarks: data,
+          error: null
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err.message
+        });
+      })
+  }
+
+  setShowAddForm(show) {
+    this.setState({
+      showAddForm: show
+    })
+  }
+
   render() {
+    const page = this.state.showAddForm ? <AddBookmark showForm={show => this.setShowAddForm(show)} /> : <BookmarkApp bookmarks={this.state.bookmarks} showForm={show => this.setShowAddForm(show)} />;
+    
     return (
       <div className='App'>
-        <AddBookmark />
-        <BookmarkApp bookmarks={bookmarks} />
+        { page }
       </div>
     );
   }
